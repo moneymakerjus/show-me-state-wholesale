@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Show Me State Wholesale</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --primary: #1f2933;
+      --accent: #10b981;
+      --bg: #f5f7fa;
+      --text: #111827;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1.5rem;
+    }
+    header h1 { font-size: 1.8rem; }
+    header p { margin-top: 0.5rem; opacity: 0.9; }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    .card {
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+    .card p {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+      color: #4b5563;
+    }
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+      color: #374151;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.5rem;
+      border: 1px solid #d1d5db;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      outline: none;
+      transition: border 0.15s, box-shadow 0.15s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35);
+    }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    button:hover { background: #059669; }
+    button:active { transform: scale(0.97); }
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #047857;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+    .success {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #047857;
+      display: none;
+    }
+    .error {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      color: #b91c1c;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Show Me State Wholesale</h1>
+      <p>Fast, fair cash offers for sellers. Consistent off‑market deals for serious buyers.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <!-- Seller Form -->
+      <div class="card">
+        <span class="badge">For Sellers</span>
+        <h2>Get a Cash Offer on Your Property</h2>
+        <p>Answer a few quick questions and we’ll review your property and send a no‑obligation cash offer.</p>
+
+        <form id="sellerForm">
+          <label for="sellerName">Your Name</label>
+          <input id="sellerName" name="sellerName" type="text" required />
+
+          <label for="sellerPhone">Phone Number</label>
+          <input id="sellerPhone" name="sellerPhone" type="tel" required />
+
+          <label for="sellerEmail">Email (optional)</label>
+          <input id="sellerEmail" name="sellerEmail" type="email" />
+
+          <label for="propertyAddress">Property Address</label>
+          <input id="propertyAddress" name="propertyAddress" type="text" required />
+
+          <label for="propertyCity">City</label>
+          <input id="propertyCity" name="propertyCity" type="text" required />
+
+          <label for="propertyState">State</label>
+          <input id="propertyState" name="propertyState" type="text" required />
+
+          <label for="propertyCondition">Property Condition</label>
+          <select id="propertyCondition" name="propertyCondition" required>
+            <option value="">Select one</option>
+            <option value="turnkey">Move‑in ready</option>
+            <option value="light-repairs">Needs light repairs</option>
+            <option value="heavy-repairs">Needs major repairs</option>
+            <option value="vacant">Vacant / boarded</option>
+          </select>
+
+          <label for="reason">Why are you selling?</label>
+          <textarea id="reason" name="reason" rows="3" placeholder="Foreclosure, inherited, tired landlord, divorce, etc."></textarea>
+
+          <button type="submit">Get My Cash Offer</button>
+          <div id="sellerSuccess" class="success">Thank you — your info was received. We’ll review and contact you shortly.</div>
+          <div id="sellerError" class="error">Something went wrong. Please try again.</div>
+        </form>
+      </div>
+
+      <!-- Buyer Form -->
+      <div class="card">
+        <span class="badge">For Buyers</span>
+        <h2>Join Our Cash Buyer List</h2>
+        <p>Get access to off‑market deals in Missouri and nationwide before they hit the public.</p>
+
+        <form id="buyerForm">
+          <label for="buyerName">Your Name</label>
+          <input id="buyerName" name="buyerName" type="text" required />
+
+          <label for="buyerPhone">Phone Number</label>
+          <input id="buyerPhone" name="buyerPhone" type="tel" required />
+
+          <label for="buyerEmail">Email</label>
+          <input id="buyerEmail" name="buyerEmail" type="email" required />
+
+          <label for="markets">Target Markets</label>
+          <input id="markets" name="markets" type="text" placeholder="e.g. Kansas City, St. Louis, nationwide" />
+
+          <label for="buyBox">Buy Box / Criteria</label>
+          <textarea id="buyBox" name="buyBox" rows="3" placeholder="Beds, baths, price range, rehab level, BRRRR, flips, rentals, etc."></textarea>
+
+          <button type="submit">Join Buyer List</button>
+          <div id="buyerSuccess" class="success">You’re in — we’ll send deals that match your criteria.</div>
+          <div id="buyerError" class="error">Something went wrong. Please try again.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Show Me State Wholesale. All rights reserved.
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const SELLER_ENDPOINT = "https://your-endpoint.com/seller";
+    const BUYER_ENDPOINT  = "https://your-endpoint.com/buyer";
+
+    async function handleFormSubmit(formId, endpoint, successId, errorId) {
+      const form = document.getElementById(formId);
+      const success = document.getElementById(successId);
+      const error = document.getElementById(errorId);
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        success.style.display = "none";
+        error.style.display = "none";
+
+        const formData = new FormData(form);
+        const payload = Object.fromEntries(formData.entries());
+
+        try {
+          const res = await fetch(endpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+
+          if (!res.ok) throw new Error("Network response was not ok");
+
+          success.style.display = "block";
+          form.reset();
+        } catch (err) {
+          console.error(err);
+          error.style.display = "block";
+        }
+      });
+    }
+
+    handleFormSubmit("sellerForm", SELLER_ENDPOINT, "sellerSuccess", "sellerError");
+    handleFormSubmit("buyerForm", BUYER_ENDPOINT, "buyerSuccess", "buyerError");
+  </script>
+</body>
+</html>
